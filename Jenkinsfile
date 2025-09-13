@@ -1,25 +1,27 @@
 pipeline{
     agent any
     environment{
-        EC2-USER='ec2-user'
-        EC2-HOST='13.232.181.168'
-        APP-NAME='to-do-app'
+        EC2_USER='ec2-user'
+        EC2_HOST='13.232.181.168'
+        APP_NAME='to-do-app'
         SHH_CRENDENTIALS='jenkins-id'
-        REPO='https://github.com/shaikmohammadrafi77/to-do.git'
-        BRANCH='main'
+        
     }
     stages{
         stage('checkout'){
             stepts{
-                git branch:"${main}",url:"${REPO}"
+                git branch:'main' , url: ''
             }
 
         }
-        stage(''Build'){
+        stage('Build'){
             steps{
-                sh 'echo Build started'
-                sh 'pip install --upgrade pip'
-                sh 'pip install -r requirements.txt'
+                sh '''
+                echo Build started
+                python3 -m venv venv
+                . venv/bin/activate. bat
+                pip install --upgrade pip
+                pip install -r requirements.txt
 
             }
         }
@@ -48,6 +50,6 @@ pipeline{
 
             }
         }
-        
+
     }
 }
