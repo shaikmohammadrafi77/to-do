@@ -15,7 +15,7 @@ pipeline{
             }
 
         }
-        stage(''Build'){
+        stage('Build'){
             steps{
                 sh 'echo Build started'
                 sh 'pip install --upgrade pip'
