@@ -4,7 +4,7 @@ pipeline{
         EC2_USER='ec2-user'
         EC2_HOST='13.232.181.168'
         APP_NAME='to-do-app'
-        SHH_CREDENTIALS= 'jenkins-id'
+        SSH_CREDENTIALS= 'jenkins-id'
         
     }
     stages{
