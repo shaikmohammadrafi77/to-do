@@ -4,7 +4,7 @@ pipeline{
         EC2_USER='ec2-user'
         EC2_HOST='13.232.181.168'
         APP_NAME='to-do-app'
-        SHH_CRENDENTIALS= 'jenkins-id'
+        SHH_CREDENTIALS= 'jenkins-id'
         
     }
     stages{
@@ -35,7 +35,7 @@ pipeline{
         }
         stage('deploy to ec2'){
             steps{
-                sshagent[env.SSH_CREDENTIALS]){
+                sshagent([env.SSH_CREDENTIALS]){
                      sh '''
                     echo Deploy started
                     scp -o StrictHostKeyChecking=no -r * ${EC2_USER}@${EC2_HOST}:/home/ec2-user/${APP_NAME}
