@@ -2,7 +2,7 @@ pipeline{
     agent any
     environment{
         EC2_USER='ec2-user'
-        EC2_HOST='13.232.181.168'
+        EC2_HOST='65.0.85.146'
         APP_NAME='to-do-app'
         SSH_CREDENTIALS= 'jenkins-id'
         
