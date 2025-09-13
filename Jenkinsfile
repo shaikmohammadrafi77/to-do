@@ -35,7 +35,7 @@ pipeline{
         }
         stage('deploy to ec2'){
             steps{
-                sshagent([env.SSH_CREDENTIALS]){
+                sshagent([env.SSH_CREDENTIALS]) {
                      sh '''
                     echo Deploy started
                     scp -o StrictHostKeyChecking=no -r * ${EC2_USER}@${EC2_HOST}:/home/ec2-user/${APP_NAME}
