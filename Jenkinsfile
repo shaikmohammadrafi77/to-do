@@ -4,7 +4,7 @@ pipeline{
 	    EC2_USER = ''
 	    EC2_HOST = ''
 	    SSH_CREDENTIALS = ''
-	    APP_DIR = '/home/ec2_user/app'
+	    APP_DIR = '/home/ec2-user/app'
 	    REPO_URL =''
 	}
 	stages{
@@ -29,9 +29,9 @@ pipeline{
 			steps{
 				sshagent([env.SSH_CREDENTIALS]) {
 					sh """
-					ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} 'mkdir -p /home/${EC2_USER}/${APP_DIR}'
-					scp -o StrictHostKeyChecking=no deploy.sh ${EC2_USER}@${EC2_HOST}:/home/${EC2_USER}/${APP_DIR}/
-					ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} 'bash /home/${EC2_USER}/${APP_DIR}/deploy.sh'
+					ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} 'mkdir -p ${APP_DIR}'
+					scp -o StrictHostKeyChecking=no deploy.sh ${EC2_USER}@${EC2_HOST}:${APP_DIR}/
+					ssh -o StrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} 'bash ${APP_DIR}/deploy.sh'
 					"""
 
 				}
